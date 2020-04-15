@@ -8,8 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/developer/developer.module').then( m => m.DeveloperPageModule)
   },
   {
-    path: 'product',
-    loadChildren: () => import('./pages/product/product.module').then( m => m.ProductPageModule)
+    path: 'skill',
+    loadChildren: () => import('./pages/skill/skill.module').then( m => m.SkillPageModule)
   },
 ];
 
