@@ -53,12 +53,12 @@ export class DbService {
     return this.isDbReady.asObservable();
   }
 
-  fetchDeveloper() {
-    return this.isDbReady.asObservable();
+  fetchDevelopers(): Observable<Developer[]> {
+    return this.developerList.asObservable();
   }
 
-  fetchSkill() {
-    return this.isDbReady.asObservable();
+  fetchSkills(): Observable<Skill[]> {
+    return this.skillList.asObservable();
   }
 
   //Developer CRUD

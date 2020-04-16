@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>developer</ion-title>
+    <ion-title>Ionic SQLite CRUD Sample</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- <ion-list lines='full'>
+    <form [formGroup]="mainForm" (ngSubmit)="storeData()">
+      <ion-item>
+        <ion-label position="floating">Developer Name</ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Skills</ion-label>
+        <ion-input formControlName="skills" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">img</ion-label>
+        <ion-input formControlName="img" type="text"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list> -->
+
+
+  <ion-list>
+    <ion-list-header>Developer</ion-list-header>
+    <ion-item lines="inset" *ngFor="let dev of developers">
+      <ion-label>{{dev.name}}</ion-label>
+      <ion-avatar slot="start">
+        <img [src]="dev.img">
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

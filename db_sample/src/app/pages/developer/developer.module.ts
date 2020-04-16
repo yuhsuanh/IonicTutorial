@@ -8,12 +8,16 @@ import { DeveloperPageRoutingModule } from './developer-routing.module';
 
 import { DeveloperPage } from './developer.page';
 
+//New import
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DeveloperPageRoutingModule
+    DeveloperPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [DeveloperPage]
 })
