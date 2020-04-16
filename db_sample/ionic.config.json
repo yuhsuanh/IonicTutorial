@@ -1,7 +1,0 @@
-{
-  "name": "db_sample",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
