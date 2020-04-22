@@ -1,6 +1,6 @@
 export class Developer {
     id: number;
     name: string;
-    skills: any[];
+    // skills: any[];
     img: string;
 }

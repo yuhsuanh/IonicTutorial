@@ -38,31 +38,38 @@ export class DeveloperPage implements OnInit {
       }
     });
 
-    // this.mainForm = this.formBuilder.group({
-    //   name: [''],
-    //   skill: [''],
-    //   img: ['']
-    // })
+    this.mainForm = this.formBuilder.group({
+      name: [''],
+      // skills: [''],
+      img: ['']
+    })
   }
 
-  // storeData() {
-  //   this.db.addDeveloper(
-  //     this.mainForm.value.name,
-  //     this.mainForm.value.skills,
-  //     this.mainForm.value.img
-  //   ).then(res =>{
-  //     this.mainForm.reset();
-  //   });
-  // }
+  storeData() {
+    console.log('Method storeData...');
+    console.log('Call add Developer...')
+    console.log(this.mainForm.value.name);
 
-  // deleteData(id) {
-  //   this.db.deleteDeveloper(id).then(async(res) => {
-  //     let toast = await this.toast.create({
-  //       message: 'Developer deleted',
-  //       duration: 2500
-  //     })
-  //     toast.present();
-  //   });
-  // }
+    console.log(this.mainForm.value.img);
+    this.db.addDeveloper(
+      this.mainForm.value.name,
+      // this.mainForm.value.skills,
+      this.mainForm.value.img
+    ).then(res => {
+      console.log('Reset Form...');
+      this.mainForm.reset();
+    })
+    console.log('Finish storeData...');
+  }
+
+  deleteData(id) {
+    this.db.deleteDeveloper(id).then(async(res) => {
+      let toast = await this.toast.create({
+        message: 'Developer deleted',
+        duration: 2500
+      })
+      toast.present();
+    });
+  }
 
 }

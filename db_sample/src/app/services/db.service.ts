@@ -68,16 +68,19 @@ export class DbService {
       let items: Developer[] = [];
       if(data.rows.length > 0) {
         for(var i=0; i<data.rows.length; i++) {
-          let skills: Skill[] = [];
-          if (data.rows.item(i).skills != '') {
-            //TODO
-            skills = JSON.parse(data.rows.item(i).skills);
-          }
+          // let skills: Skill[] = [];
+          // if (data.rows.item(i).skills != '') {
+          //   console.log("Get Developers in db.service");
+          //   console.log(data.rows.item(i).skills);
+          //   //TODO
+          //   skills = JSON.parse(data.rows.item(i).skills);
+          //   console.log(skills);
+          // }
 
           items.push({
             id: data.rows.item(i).id,
             name: data.rows.item(i).name,
-            skills: skills,
+            // skills: skills,
             img: data.rows.item(i).img
           });
         }
@@ -89,38 +92,38 @@ export class DbService {
   //Get developer by id
   getDeveloper(id): Promise<Developer> {
     return this.database.executeSql('SELECT * FROM developer WHERE id = ?', [id]).then(data =>{
-      let skills: Skill[] = [];
-      if (data.rows.item(0).skills != '') {
-        //TODO
-        console.log(data.rows.item(0).skills);
-        console.log(data.rows.item(0).skills.length);
-        console.log(data.rows.item(0).skills(0));
-        skills = JSON.parse(data.rows.item(0).skills);
-      }
+      // let skills: Skill[] = [];
+      // if (data.rows.item(0).skills != '') {
+      //   //TODO
+      //   console.log(data.rows.item(0).skills);
+      //   console.log(data.rows.item(0).skills.length);
+      //   console.log(data.rows.item(0).skills(0));
+      //   skills = JSON.parse(data.rows.item(0).skills);
+      // }
 
       return {
         id: data.rows.item(0).id,
         name: data.rows.item(0).name,
-        skills: skills,
+        // skills: skills,
         img: data.rows.item(0).img
       }
     });
   }
 
   //Add developer
-  addDeveloper(name, skills, img) {
-    let data = [name, JSON.stringify(skills), img];
-    return this.database.executeSql('INSERT INTO developer (name, skills, img) VALUES (?, ?, ?)', data).then(data => {
+  addDeveloper(name, img) {
+    let data = [name, img];
+    return this.database.executeSql('INSERT INTO developer (name, img) VALUES (?, ?)', data).then(data => {
       this.getDevelopers();
     });
   }
 
   //Update developer
   updateDeveloper(dev: Developer) {
-    let data = [dev.name, JSON.stringify(dev.skills), dev.img];
-    return this.database.executeSql(`UPDATE developer SET name = ?, skills = ?, img = ? WHERE id = ${dev.id}`, data).then(data => {
-      this.getDevelopers();
-    })
+    // let data = [dev.name, JSON.stringify(dev.skills), dev.img];
+    // return this.database.executeSql(`UPDATE developer SET name = ?, skills = ?, img = ? WHERE id = ${dev.id}`, data).then(data => {
+    //   this.getDevelopers();
+    // })
   }
 
   //Delete developer
